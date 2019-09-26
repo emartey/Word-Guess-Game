@@ -1,0 +1,49 @@
+/* head */
+
+.jumbotron{
+    background-color: black;
+    margin-top: 3%; 
+}
+
+/* body */
+
+body{
+    background: url("../images/hattipnologo.0.jpg") 
+}
+
+footer{
+    margin-top: 1%;
+    background: url("../images/8bb.png");
+    padding: 6%;
+    margin-left: 31%;
+    background-repeat: no-repeat;
+    margin-bottom: 2%;
+    padding-bottom: 7%;
+    padding-top: 7%;
+}
+
+p,
+h1{
+    color: red;
+    margin-left: 16%;
+}
+
+p{
+    margin-left: 44%;
+}
+
+.card-header,
+.card-body {
+    margin: 0%;
+    padding: 0%;
+}
+
+.card-title{
+    margin-left: 41%;
+    font-size: 159%;
+}
+
+.word{
+    margin-left: 33%;
+    font-size: 428%;
+}
