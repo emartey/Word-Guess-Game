@@ -8,7 +8,7 @@ var numBlank = 0;
 var correctOne = [];
 var wrongOne = [];
 
-// Game counters
+// Counters
 var winCount = 0;
 var lossCount = 0;
 var guessesLeft = 15;
@@ -21,7 +21,7 @@ function startGame() {
     numBlank = lettersinWord.length;
 
 
-    //reset
+    //defaults
     guessesLeft = 15;
     wrongOne = [];
     correctOne = [];
@@ -32,7 +32,7 @@ function startGame() {
     }
 
     // Change HTML
-    document.getElementById("word").innerHTML = correctOne.join(" ");
+    document.getElementById("wordGuess").innerHTML = correctOne.join(" ");
     document.getElementById("quantityGuesses").innerHTML = guessesLeft;
     document.getElementById("winCount").innerHTML = winCount;
     document.getElementById("lossCount").innerHTML = lossCount;
@@ -47,9 +47,79 @@ function startGame() {
 
 }
 
+function checkLetters(letter) {
+
+    var lettersinWord = false;
+    for (var i = 0; i < numBlank; i++) {
+
+        if (selectWord[i] == letter) {
+            correctOne == true;
+        }
+    }
+
+    //where letter is and populate in blanks
+    if (lettersinWord) {
+
+        for (var i = 0; i < numBlank; i++) {
+            if (selectWord[i] == letter) {
+                correctOne[i] = letter;
+            }
+        }
+    }
+
+
+    //wrong letter
+    else {
+        wrongOne.push(letter);
+        quantityGuesses--
+    }
+    console.log(correctOne);
+    startGame();
+}
+
+function roundComplete() {
+    console.log("Win Count: " + winCount + "| + Loss Count" + lossCount + "| + Guesses Left" + guessesLeft);
+
+    //winner
+    if (lettersinWord.toString() == correctOne.toString()) {
+        winCount++;
+        alert("Winner, WINNER, vegan dinner!")
+
+        //counter in html
+        document.getElementById("winCount").innerHTML = winCount;
+
+        startGame();
+    }
+
+    // if user lost
+
+    else if (guessesLeft == 0) {
+
+        lossCount++;
+        alert("Awwww sucks to suck, TRY AGAIN!")
+
+        document.getElementById("lossCount").innerHTML = lossCount;
+        startGame();
+    }
+
+
+
+
+
+}
 
 
 
 
 // MAIN PROCESS
+
+//starts the game
 startGame();
+
+// Register keyclicks
+document.onkeyup = function (event) {
+    var letterGuess = String.fromCharCode(event.keyCode).toUpperCase();
+    checkLetters(letterGuess);
+    roundComplete;
+    console.log(letterGuess);
+};
