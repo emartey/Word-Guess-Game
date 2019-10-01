@@ -25,15 +25,26 @@ footer{
 }
 
 p,
-h1{
+h1,
+h2,
+h3 {
     color: red;
-    margin-left: 16%;
+    
+    text-align: center;
+}
+
+
+
+#wordGuess,
+h2 {
+    color: black;
+    margin-left:-3%;
 }
 
 p{
-    margin-left: 44%;
+    margin-top: 19px;
+    margin-bottom: 0
 }
-
 .card-header,
 .card-body {
     margin: 0%;
@@ -41,7 +52,7 @@ p{
 }
 
 .card-title{
-    margin-left: 41%;
+    
     font-size: 159%;
 }
 
