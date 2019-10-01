@@ -12,16 +12,17 @@ body{
 }
 
 footer{
-    margin-top: 1%;
+    margin-top: 2%;
     background: url(../images/8bb.png);
-    padding: 6%;
+    padding: 20%;
     margin-left: 31%;
-    margin-right: 37%;
+    margin-right: 32%;
     background-repeat: no-repeat;
     margin-bottom: 2%;
-    padding-bottom: 4%;
+    padding-bottom: 7%;
     padding-top: 7%;
     border: solid black;
+    padding-right:18.4%;
 }
 
 p,
@@ -61,3 +62,41 @@ p{
     font-size: 428%;
 }
 
+/* Media Queries 640px */
+@media screen and (max-width: 640px) {
+    body,
+    footer{
+        background-size: 100%;
+    }
+   
+  }
+  
+  
+  /* Media Queries 768px */
+  @media screen and (min-width: 641px) and (max-width: 768px) {
+    body,
+    footer{
+        background-size: 100%;
+    }
+  
+  }
+  
+  /* Media Queries 980px */
+  @media screen and (min-width: 769px) and (max-width: 980px) {
+    body,
+    footer{
+        background-size: 100%;
+    }
+  
+  
+  }
+    /* Media Queries MAX OUT*/
+  @media screen and (min-width: 980px) and (max-width: 1600px) {
+    body,
+    footer{
+        background-size: 100%;
+    }
+  
+  
+  }
+    
