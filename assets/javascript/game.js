@@ -11,6 +11,7 @@ var wordGuessDiv = document.getElementById("wordGuess")
 var manyGuessLeft = document.getElementById("quantityGuesses")
 var winCounterNum = document.getElementById("winCount")
 var lossCounterNum = document.getElementById("lossCount")
+var wrongGuessDiv = document.getElementById("letGuesses")
 // Counters
 var winCount = 0;
 var lossCount = 0;
@@ -39,7 +40,7 @@ function startGame() {
     manyGuessLeft.innerHTML = guessesLeft;
     winCounterNum.innerHTML = winCount;
     lossCounterNum.innerHTML = lossCount;
-
+    wrongGuessDiv.innerHTML = wrongOne;
 
     //tests
 
@@ -90,6 +91,7 @@ function checkLetters(letter) {
     manyGuessLeft.innerHTML = guessesLeft;
     winCounterNum.innerHTML = winCount;
     lossCounterNum.innerHTML = lossCount;
+    wrongGuessDiv.innerHTML = wrongOne;
 
 
 }
@@ -100,11 +102,13 @@ function roundComplete() {
     console.log({ correctOne, wrongOne })
     //winner
     // check if won
-    if (numBlank.toString() == correctOne.toString()) {
+    if (lettersinWord.toString().toUpperCase() == correctOne.toString()) {
         winCount++;
-        alert("Winner, WINNER, vegan dinner!")
 
 
+        winCounterNum.innerHTML = winCount;
+        alert("Winner, WINNER, vegan dinner! Your next stop is " + selectWord.toUpperCase() + "!");
+        startGame();
 
 
     }
@@ -116,14 +120,16 @@ function roundComplete() {
         lossCount++;
         alert("Awwww sucks to suck, TRY AGAIN!")
 
+        lossCounterNum.innerHTML = lossCount;
 
+        startGame();
 
     }
 
 
 
-    winCounterNum.innerHTML = winCount;
-    lossCounterNum.innerHTML = lossCount;
+
+
 
 
 }
