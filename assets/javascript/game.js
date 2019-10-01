@@ -7,7 +7,10 @@ var lettersinWord = [];
 var numBlank = 0;
 var correctOne = [];
 var wrongOne = [];
-
+var wordGuessDiv = document.getElementById("wordGuess")
+var manyGuessLeft = document.getElementById("quantityGuesses")
+var winCounterNum = document.getElementById("winCount")
+var lossCounterNum = document.getElementById("lossCount")
 // Counters
 var winCount = 0;
 var lossCount = 0;
@@ -32,63 +35,78 @@ function startGame() {
     }
 
     // Change HTML
-    document.getElementById("wordGuess").innerHTML = correctOne.join(" ");
-    document.getElementById("quantityGuesses").innerHTML = guessesLeft;
-    document.getElementById("winCount").innerHTML = winCount;
-    document.getElementById("lossCount").innerHTML = lossCount;
+    wordGuessDiv.innerHTML = correctOne.join("  ");
+    manyGuessLeft.innerHTML = guessesLeft;
+    winCounterNum.innerHTML = winCount;
+    lossCounterNum.innerHTML = lossCount;
 
 
     //tests
-    console.log(wordPossib);
+
     console.log(selectWord);
     console.log(lettersinWord);
     console.log(numBlank);
     console.log(correctOne);
 
+
 }
+
 
 function checkLetters(letter) {
 
-    var lettersinWord = false;
+    var letterThere = false;
     for (var i = 0; i < numBlank; i++) {
-
-        if (selectWord[i] == letter) {
-            correctOne == true;
+        if (selectWord[i].toUpperCase() == letter) {
+            console.log("CORRECT!")
+            correctOne[i] = letter;
+            letterThere = true;
         }
     }
+
+
+
+
 
     //where letter is and populate in blanks
-    if (lettersinWord) {
+    // if (letterThere) {
 
-        for (var i = 0; i < numBlank; i++) {
-            if (selectWord[i] == letter) {
-                correctOne[i] = letter;
-            }
-        }
-    }
+    //     for (var i = 0; i < numBlank; i++) {
+    //         if (selectWord[i] == letter) {
+    //             correctOne[i] = letter;
+    //         }
+    //     }
+    // }
+
+
 
 
     //wrong letter
-    else {
+    if (!letterThere) {
         wrongOne.push(letter);
-        quantityGuesses--
+        guessesLeft--
     }
-    console.log(correctOne);
-    startGame();
+
+    wordGuessDiv.innerHTML = correctOne.join("  ");
+    manyGuessLeft.innerHTML = guessesLeft;
+    winCounterNum.innerHTML = winCount;
+    lossCounterNum.innerHTML = lossCount;
+
+
 }
 
-function roundComplete() {
-    console.log("Win Count: " + winCount + "| + Loss Count" + lossCount + "| + Guesses Left" + guessesLeft);
 
+function roundComplete() {
+    console.log("Win Count: " + winCount + "|  Loss Count: " + lossCount + "|  Guesses Left: " + guessesLeft);
+    console.log({ correctOne, wrongOne })
     //winner
-    if (lettersinWord.toString() == correctOne.toString()) {
+    // check if won
+    if (numBlank.toString() == correctOne.toString()) {
         winCount++;
         alert("Winner, WINNER, vegan dinner!")
 
-        //counter in html
-        document.getElementById("winCount").innerHTML = winCount;
 
-        startGame();
+
+
     }
 
     // if user lost
@@ -98,20 +116,21 @@ function roundComplete() {
         lossCount++;
         alert("Awwww sucks to suck, TRY AGAIN!")
 
-        document.getElementById("lossCount").innerHTML = lossCount;
-        startGame();
+
+
     }
 
 
 
+    winCounterNum.innerHTML = winCount;
+    lossCounterNum.innerHTML = lossCount;
 
 
 }
 
-
-
-
 // MAIN PROCESS
+
+
 
 //starts the game
 startGame();
@@ -120,6 +139,6 @@ startGame();
 document.onkeyup = function (event) {
     var letterGuess = String.fromCharCode(event.keyCode).toUpperCase();
     checkLetters(letterGuess);
-    roundComplete;
+    roundComplete();
     console.log(letterGuess);
-};
+}
